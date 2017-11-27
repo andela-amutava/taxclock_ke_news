@@ -7,7 +7,6 @@ log = set_logging()
 
 
 class StandardMedia(Scraper):
-
     '''
     This is a starndard scraper that gets data from the standard website.
     '''
@@ -19,12 +18,15 @@ class StandardMedia(Scraper):
 
     def scrape_page(self):
         '''Scrapes stories from standard media.
+
         Usage::
+
               use the class object
-              pass the site url to\
-              get_html_content method.
+              pass the site url to get_html_content method.
+
         :param_train_data: the url of the site
         :rtype: the stories image,link, title.
+
         '''
 
         result = self.base.get_html_content(self.url)
@@ -57,4 +59,3 @@ class StandardMedia(Scraper):
             return data
         else:
             log.error(result)
-            

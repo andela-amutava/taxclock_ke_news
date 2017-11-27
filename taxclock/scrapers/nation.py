@@ -1,9 +1,5 @@
 from taxclock import set_logging
 from taxclock.scrapers.base import Scraper
-
-import logging
-
-
 from taxclock.settings import scrape_sites, base_urls, IMG_PLACEHOLDER
 
 
@@ -23,12 +19,12 @@ class NationMedia(Scraper):
 
     def scrape_page(self):
         '''Scrapes stories from nation media.
+
         Usage::
-              use the class object
-              pass the site url to\
-              get_html_content method.
+
         :param_train_data: the url of the site
         :rtype: the stories image,link, title.
+
         '''
         result = self.base.get_html_content(self.url)
         if result:

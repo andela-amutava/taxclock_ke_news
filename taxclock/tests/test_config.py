@@ -5,8 +5,12 @@ from taxclock.settings import scrape_sites, base_urls
 
 
 class ConfigTest(unittest.TestCase):
+    '''Tests for configuration
+
+    '''
 
     def test_sites_url(self):
+
         '''Tests whether all the\
         site url's are working.
         '''
@@ -16,6 +20,7 @@ class ConfigTest(unittest.TestCase):
         self.assertEqual(resp.status_code, 200)
 
     def test_base_url(self):
+
         '''Tests whether all the \
         base url's  are working.
         '''

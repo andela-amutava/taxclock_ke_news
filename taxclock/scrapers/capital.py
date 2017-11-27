@@ -23,8 +23,10 @@ class CapitalMedia(Scraper):
         Usage::
               create the class object
               using the object call the method
+
         :param_train_data: the url of the site
         :rtype: the stories image,link, title.
+
         '''
         result = self.base.get_html_content(self.url)
         if result:
@@ -41,7 +43,8 @@ class CapitalMedia(Scraper):
                     date_content = get_data.find("strong").text
                     date_string = date_content,
                     reg_exp = re.match(
-                        '^(\w+)(\W+)(\w+)(\W+)(\w+)(\W+)(\d+)', str(date_string))
+                        '^(\w+)(\W+)(\w+)(\W+)(\w+)(\W+)(\d+)',
+                        str(date_string))
                     result_value = reg_exp.groups(
                     )[4], ' ', reg_exp.groups()[6]
                     date = ''.join(result_value)
@@ -56,4 +59,3 @@ class CapitalMedia(Scraper):
             return data
         else:
             log.error(result)
-            

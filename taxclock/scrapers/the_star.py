@@ -17,13 +17,17 @@ class StarMedia(Scraper):
         self.base = Scraper()
 
     def scrape_page(self):
+
         '''Scrapes stories from star media.
+
         Usage::
+
               create the class object
-              using the object call the  url to\
-              get_html_content method.
+              using the object call the  url to get_html_content method.
+
         :param_train_data: the url of the site
         :rtype: the stories image,link, title.
+
         '''
         result = self.base.get_html_content(self.url)
         if result:
@@ -46,7 +50,6 @@ class StarMedia(Scraper):
                         'date_published': date
                     })
             except Exception as err:
-
                 log.error(err, extra={'notify_slack': True}, exc_info=True)
             return data
         else:
@@ -54,11 +57,16 @@ class StarMedia(Scraper):
 
     def pagination(self):
         '''Gets pages links from the star.
+
         Usage::
+
               create the class object
               using the object call the method
+
         :param_train_data: the url of the site
         :rtype: the urls of all pages in the site.
+
+
         '''
 
         result = self.base.get_html_content(self.url)
@@ -73,4 +81,5 @@ class StarMedia(Scraper):
                 return urls
             else:
                 log.error(ul, extra={'notify_slack': True}, exc_info=True)
-                
+        else:
+            log.error(str(result))

@@ -10,7 +10,6 @@ from dateutil.parser import parse
 from taxclock import set_logging
 from taxclock import settings as env
 
-
 log = set_logging()
 
 
@@ -30,9 +29,12 @@ class Scraper(object):
     def get_html_content(self, site_url):
         '''Returns a soup object.
         Usage::
+
             pass the site url to the method.
+
         :param_train_data: the url of the site
         :rtype: the stories image,link, title.
+
         '''
 
         try:
@@ -49,8 +51,10 @@ class Scraper(object):
         '''Writes content from the website to file.
         Usage::
              file name to write data
+
         :param_train_data: the filename
         :rtype: outputs data to a file.
+
         '''
 
         with open(os.path.dirname(__file__) +
@@ -72,18 +76,18 @@ class Scraper(object):
             except Exception as err:
                 self.local_store(data[:7])
                 log.error(err, extra={'notify_slack': True}, exc_info=True)
-
         else:
             log.info('No data to save')
 
     def sort_data_by_date(self, data):
         '''Sorts data by date.
         Usage::
+
             Pass the data to sort.
-        :rtype: outputs the sorted data.
+
+        :rtype: outputs a list of sorted data.
         '''
         if not data:
             log.info('No data was found for sorting.')
         return sorted(data, key=lambda k: parse(k['date_published']),
                       reverse=True)
-        

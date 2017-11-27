@@ -60,7 +60,7 @@ LOGGING = {
         },
         'full': {
             'format': '%(asctime)s %(name)-15s %(levelname)-8s %(message)s',
-            }
+        }
 
     },
 
@@ -72,15 +72,14 @@ LOGGING = {
             'formatters': 'simple'
         },
         'console_priority': {
-                   'class': 'logging.StreamHandler',
-                   'formatter': 'full',
-                   'level': 'ERROR',
-                   'stream': 'ext://sys.stderr'
-                   }
-              },
+            'class': 'logging.StreamHandler',
+            'formatter': 'full',
+            'level': 'ERROR',
+            'stream': 'ext://sys.stderr'
+        }
+    },
     'root': {
         'level': 'INFO',
         'handlers': ['console', 'console_priority']
     }
 }
-
